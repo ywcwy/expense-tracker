@@ -24,5 +24,5 @@ const recordSchema = new Schema({
   }
 })
 
-// 匯出record資料模組
+// 把以上schema命名為 Record 模組並匯出
 module.exports = mongoose.model('Record', recordSchema) 

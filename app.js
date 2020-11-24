@@ -1,6 +1,7 @@
 const express = require('express')
+const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
-
+const port = 3000
 const app = express()
 
 // 連線到資料庫
@@ -14,5 +15,9 @@ db.once('open', () => { // 連線成功
 })
 
 app.get('/', (req, res) => {
-  res.render('index')
+  res.send('This is the index of expense-tracker.')
+})
+
+app.listen(port, () => {
+  console.log(`now is on localhost:${port}`)
 })
