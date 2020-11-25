@@ -1,0 +1,33 @@
+/* *{
+  border: 1px solid black;
+} */
+
+main{
+  width:600px;
+  margin: 0 auto;
+  color: rgb(73, 72, 72);
+  background-color: rgb(220, 236, 236); 
+}
+
+
+.category {
+  border: 1px solid black;
+  width: 200px;
+  background-color: white;
+}
+
+.total-amount {
+  color: orangered;
+}
+
+.data {
+  width: 400px;
+  margin: 0 auto;
+}
+.name{
+  width: 250px;
+}
+
+.date {
+  font-size: 0.8em;
+}

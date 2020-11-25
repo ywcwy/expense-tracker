@@ -14,10 +14,18 @@ db.once('open', () => { // 連線成功
   console.log('mongodb connected!')
 })
 
+// 樣版引擎設定
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.set('view engine', 'handlebars')
+// setting static files
+app.use(express.static('public'))
+
+//路由設定
 app.get('/', (req, res) => {
-  res.send('This is the index of expense-tracker.')
+  res.render('index', { css: 'index.css' })
 })
 
-app.listen(port, () => {
-  console.log(`now is on localhost:${port}`)
+// create
+app.get('/new', (req, res) => {
+  res.render('new', { css: 'edit.css' })
 })
