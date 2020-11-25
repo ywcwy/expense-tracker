@@ -1,6 +1,7 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
+const Expense = require('./models/record')
 const port = 3000
 const app = express()
 
@@ -22,10 +23,17 @@ app.use(express.static('public'))
 
 //路由設定
 app.get('/', (req, res) => {
-  res.render('index', { css: 'index.css' })
+  Expense.find()
+    .lean()
+    .then(expense => res.render('index', { expense, css: 'index.css' }))
+    .catch(error => console.log(error))
 })
 
 // create
-app.get('/new', (req, res) => {
+app.get('/expense/new', (req, res) => {
   res.render('new', { css: 'edit.css' })
+})
+
+app.listen(port, () => {
+  console.log(`now is on localhost:${port}`)
 })
