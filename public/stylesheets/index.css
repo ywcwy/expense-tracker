@@ -3,7 +3,7 @@
 } */
 
 main{
-  width:600px;
+  width: 600px;
   margin: 0 auto;
   color: rgb(73, 72, 72);
   background-color: rgb(220, 236, 236); 
@@ -24,10 +24,27 @@ main{
   width: 400px;
   margin: 0 auto;
 }
+
+tr {
+  width: 600px;
+}
+
+tr:hover {
+  background-color: #efefef;
+}
 .name{
-  width: 250px;
+  width: 150px;
 }
 
 .date {
   font-size: 0.8em;
+}
+
+.modify:hover{
+  cursor: pointer;
+  color: rgb(14, 107, 92);
+}
+.delete:hover {
+  cursor: pointer;
+  color:red;
 }

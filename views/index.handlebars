@@ -1,6 +1,6 @@
 <main>
   <div class="dropdown pt-3 text-center">
-    <button class="btn btn-light dropdown-toggle mb-3 category" type="button" id="dropdownMenuButton"
+    <button class="btn btn-light dropdown-toggle mb-3 mt-2 category" type="button" id="dropdownMenuButton"
       data-toggle="dropdown" aria-haspopup="true" aria-expended="false">
       類別
     </button>
@@ -13,24 +13,35 @@
     </div>
   </div>
   <div class="total-amount-part text-center">
-    <div class="total d-flex justify-content-center">
-      <p>總金額：</p>
-      <h1 class="total-amount ml-2">100000</h1>
+    <div class="total d-flex justify-content-center mt-3 mr-5">
+      <p class="mr-2">總金額：</p>
+      <h1 class="total-amount">0</h1>
     </div>
   </div>
-  <div class="d-flex justify-content-center align-items-center data">
-    <i class="fas fa-utensils fa-3x mr-3" style="color: rgb(69, 150, 177)"></i>
-    <div class="item">
-      <h4 class="mt-2 name">午餐</h4>
-      <p class="mb-2 date">2019/04/23</p>
-    </div>
-    <h4 class="ml-2">60</h4>
-    <div class="edit ml-3 d-flex align-items-center">
-      <p class="modify mr-3 mt-2">修改</p>
-      <p class="delete mt-2">刪除</p>
-    </div>
-  </div>
-  <div class="d-flex justify-content-center mt-3 pb-3">
-    <a class="btn btn-warning create" type="button" href="/new">新增支出</a>
+  <table class="d-flex justify-content-center">
+    {{#each record}}
+    <tr class="data">
+      <td>
+        <i class="{{this.icon}} fa-3x mr-3 ml-3 d-flex justify-content-center" style="color: rgb(69, 150, 177)"></i>
+      </td>
+      <td class="item">
+        <h4 class="mt-2 name">{{this.name}}</h4>
+        <p class="mb-2 date">{{this.date}}</p>
+      </td>
+
+      <td>
+        <h4 class="mr-3 ml-3 text-right">{{this.amount}}</h4>
+      </td>
+      <td class="edit">
+        <p class="modify mr-3 ml-3 mt-2">修改</p>
+      </td>
+      <td class="edit">
+        <p class="delete mt-2 mr-3 ml-3">刪除</p>
+      </td>
+    </tr>
+    {{/each}}
+  </table>
+  <div class="d-flex justify-content-center mt-3 pb-5">
+    <a class="btn btn-warning create" type="button" href="/expense/new">新增支出</a>
   </div>
 </main>
