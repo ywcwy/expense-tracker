@@ -39,7 +39,11 @@ app.get('/', (req, res) => {
             record.category = category[category.indexOf(record.category)].icon
             console.log(record.category)
           }
-          res.render('index', { record, css: 'index.css' })
+          let totalAmount = 0
+          record.forEach(item => {
+            totalAmount += item.amount
+          })
+          res.render('index', { record, totalAmount, css: 'index.css' })
         })
 
     }).catch(error => console.log(error))
