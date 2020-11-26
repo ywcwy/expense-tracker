@@ -1,0 +1,37 @@
+[
+  {
+    "name": "早午餐",
+    "category": "餐飲食品",
+    "icon": "fas fa-utensils",
+    "date": "2021/1/1",
+    "amount": 150
+  },
+  {
+    "name": "高鐵",
+    "category": "交通出行",
+    "icon": "fas fa-shuttle-van",
+    "date": "2021/1/2",
+    "amount": 350
+  },
+  {
+    "name": "KTV",
+    "category": "休閒娛樂",
+    "icon": "fas fa-grin-beam",
+    "date": "2021/1/1",
+    "amount": 680
+  },
+  {
+    "name": "沙發",
+    "category": "家居物業",
+    "icon": "fas fa-home",
+    "date": "2021/1/15",
+    "amount": 12000
+  },
+  {
+    "name": "包禮",
+    "category": "其他",
+    "icon": "fas fa-pen",
+    "date": "2021/1/1",
+    "amount": 3600
+  }
+]

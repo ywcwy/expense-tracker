@@ -9,21 +9,20 @@ db.on('error', () => { //連線異常
 })
 
 db.once('open', () => { // 連線成功
-  console.log('mongodb connected!')
   Category.create({
     categoryName: '家居物業',
-    icon: '<i class="fas fa-home"></i>'
+    icon: 'fas fa-home'
   }, {
     categoryName: '交通出行',
-    icon: '<i class="fas fa-shuttle-van"></i>'
+    icon: 'fas fa-shuttle-van'
   }, {
     categoryName: '休閒娛樂',
-    icon: '<i class="fas fa-grin-beam"></i>'
+    icon: 'fas fa-grin-beam'
   }, {
     categoryName: '餐飲食品',
-    icon: '<i class="fas fa-utensils"></i>'
+    icon: 'fas fa-utensils'
   }, {
     categoryName: '其他',
-    icon: '<i class="fas fa-pen"></i>'
+    icon: 'fas fa-pen'
   })
 })
