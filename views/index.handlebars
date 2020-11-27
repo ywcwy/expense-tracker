@@ -28,15 +28,14 @@
         <h4 class="mt-2 name">{{this.name}}</h4>
         <p class="mb-2 date">{{this.date}}</p>
       </td>
-
-      <td>
-        <h4 class="mr-3 ml-3 text-right">{{this.amount}}</h4>
+      <td class="">
+        <h4 class="mr-3 ml-3 mt-2 text-right">{{this.amount}}</h4>
       </td>
       <td class="edit">
-        <p class="modify mr-3 ml-3 mt-2">修改</p>
+        <a class="btn modify mr-3 ml-3" href="/expense/{{this._id}}/edit">修改</a>
       </td>
       <td class="edit">
-        <p class="delete mt-2 mr-3 ml-3">刪除</p>
+        <a class="btn delete mr-3 ml-3" href="/">刪除</a>
       </td>
     </tr>
     {{/each}}

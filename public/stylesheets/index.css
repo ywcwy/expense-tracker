@@ -39,6 +39,9 @@ tr:hover {
 .date {
   font-size: 0.8em;
 }
+.modify, .delete{
+  color: rgb(73, 72, 72);
+}
 
 .modify:hover{
   cursor: pointer;

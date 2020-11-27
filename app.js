@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 })
 
 
-// create
+// create new expense
 app.get('/expense/new', (req, res) => { // new page
   return res.render('new', { css: 'edit.css' })
 })
@@ -66,6 +66,29 @@ app.post('/expense', (req, res) => { // 將 new page 填完的資料 post
       res.redirect('/')
     }).catch(error => console.log(error))
 })
+
+
+// edit 
+app.get('/expense/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .lean()
+    .then((record) => {
+      res.render('edit', { record, css: 'edit.css' })
+    }).catch(error => console.log(error))
+})
+
+app.post('/expense/:id/edit', (req, res) => {
+  const id = req.params.id
+  const body = req.body
+  return Record.findById(id)
+    .then(record => {
+      record = Object.assign(record, req.body)
+      return record.save()  //重新儲存修改後的資料
+    }).then(() => res.redirect(`/`))
+    .catch(error => console.log(error))
+})
+
 
 app.listen(port, () => {
   console.log(`now is on localhost:${port}`)
