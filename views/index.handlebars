@@ -5,11 +5,11 @@
       類別
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a href="/" class="dropdown-item"><i class="fas fa-home"></i> 家居物業</a>
-      <a href="/" class="dropdown-item"><i class="fas fa-shuttle-van"></i> 交通出行</a>
-      <a href="/" class="dropdown-item"><i class="fas fa-grin-beam"></i> 休閒娛樂</a>
-      <a href="/" class="dropdown-item"><i class="fas fa-utensils"></i> 餐飲食品</a>
-      <a href="/" class="dropdown-item"><i class="fas fa-pen"></i> 其他</a>
+      <a href="/expense?filter=living" class="dropdown-item"><i class="fas fa-home"></i> 家居物業</a>
+      <a href="/expense?filter=transport" class="dropdown-item"><i class="fas fa-shuttle-van"></i> 交通出行</a>
+      <a href="/expense?filter=entertainment" class="dropdown-item"><i class="fas fa-grin-beam"></i> 休閒娛樂</a>
+      <a href="/expense?filter=food" class="dropdown-item"><i class="fas fa-utensils"></i> 餐飲食品</a>
+      <a href="/expense?filter=others" class="dropdown-item"><i class="fas fa-pen"></i> 其他</a>
     </div>
   </div>
   <div class="total-amount-part text-center">
@@ -35,7 +35,7 @@
         <a class="btn modify mr-3 ml-3" href="/expense/{{this._id}}/edit"><button class="btn btn-info">修改</button></a>
       </td>
       <td class="edit">
-        <form action="/expense/{{this._id}}/delete" method="POST" class="delete mr-3 ml-3" type="submit">
+        <form action="/expense/{{this._id}}?_method=DELETE" method="POST" class="delete mr-3 ml-3" type="submit">
           <button class="btn btn-danger" type="submit">刪除</button>
         </form>
       </td>

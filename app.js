@@ -2,6 +2,7 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 const Record = require('./models/record')
 const Category = require('./models/category')
 const port = 3000
@@ -20,8 +21,10 @@ db.once('open', () => { // 連線成功
 // 樣版引擎設定
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
-// setting static files
+// setting static files, bodyParse, methodOverride
 app.use(express.static('public'), bodyParser.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
+
 
 //路由設定
 app.get('/', (req, res) => {
@@ -78,7 +81,7 @@ app.get('/expense/:id/edit', (req, res) => {
     }).catch(error => console.log(error))
 })
 
-app.post('/expense/:id/edit', (req, res) => {
+app.put('/expense/:id', (req, res) => {
   const id = req.params.id
   const body = req.body
   return Record.findById(id)
@@ -90,14 +93,13 @@ app.post('/expense/:id/edit', (req, res) => {
 })
 
 // delete
-app.post('/expense/:id/delete', (req, res) => {
+app.delete('/expense/:id', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
     .then((record) => record.remove())
     .then(res.redirect(`/`))
     .catch(error => console.log(error))
 })
-
 
 
 app.listen(port, () => {
