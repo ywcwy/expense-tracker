@@ -3,7 +3,7 @@
 } */
 
 main{
-  width: 600px;
+  width: 800px;
   margin: 0 auto;
   color: rgb(73, 72, 72);
   background-color: rgb(220, 236, 236); 
@@ -17,7 +17,7 @@ main{
 }
 
 .total-amount {
-  color: orangered;
+  color: rgb(255, 91, 27);
 }
 
 .data {
@@ -41,13 +41,4 @@ tr:hover {
 }
 .modify, .delete{
   color: rgb(73, 72, 72);
-}
-
-.modify:hover{
-  cursor: pointer;
-  color: rgb(14, 107, 92);
-}
-.delete:hover {
-  cursor: pointer;
-  color:red;
 }

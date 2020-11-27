@@ -32,10 +32,12 @@
         <h4 class="mr-3 ml-3 mt-2 text-right">{{this.amount}}</h4>
       </td>
       <td class="edit">
-        <a class="btn modify mr-3 ml-3" href="/expense/{{this._id}}/edit">修改</a>
+        <a class="btn modify mr-3 ml-3" href="/expense/{{this._id}}/edit"><button class="btn btn-info">修改</button></a>
       </td>
       <td class="edit">
-        <a class="btn delete mr-3 ml-3" href="/">刪除</a>
+        <form action="/expense/{{this._id}}/delete" method="POST" class="delete mr-3 ml-3" type="submit">
+          <button class="btn btn-danger" type="submit">刪除</button>
+        </form>
       </td>
     </tr>
     {{/each}}
