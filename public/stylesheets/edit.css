@@ -1,0 +1,26 @@
+/* *{
+  border: 1px solid black;
+} */
+
+main{
+  width:600px;
+  margin: 0 auto;
+  color: rgb(73, 72, 72);
+  background-color: rgb(220, 236, 236); 
+}
+
+.required{
+  font-size: 0.5em;
+}
+
+.title {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+input, select {
+  width: 200px;
+}
+
