@@ -1,7 +1,8 @@
-const Category = require('../category')
 const db = require('../../config/mongoose')
+const Category = require('../category')
 
 db.once('open', () => { // 連線成功
+  console.log('db connected!')
   Category.create({
     categoryName: '家居物業',
     icon: 'fas fa-home'
