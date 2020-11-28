@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
     .sort({ date: 'asc' })
     .then((record) => {
       let totalAmount = 0
+      let total = 0
       record.forEach(item => {
         totalAmount += item.amount  // 先計算總金額
         total = thousandComma(totalAmount)
