@@ -1,11 +1,6 @@
-const mongoose = require('mongoose')
 const recordList = require('../records.json')
 const Record = require('../record')
-mongoose.connect('mongodb://localhost/expense-list', { useNewUrlParser: true, useUnifiedTopology: true }) //資料庫伺服器內的專案名稱
-const db = mongoose.connection //取得資料庫的連線狀態
-db.on('error', () => { //連線異常
-  console.log('mongodb error!')
-})
+const db = require('../../config/mongoose')
 db.once('open', () => { // 連線成功
   recordList.forEach((item) => {
     Record.create({// 寫入種子資料
