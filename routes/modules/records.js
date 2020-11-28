@@ -19,7 +19,7 @@ router.post('/', (req, res) => { // 將 new page 填完的資料 post
     date: body.date,
     amount: body.amount
   })
-  Category.find({ categoryName: body.category }, (err, categories) => {
+  Category.find({ categoryName: record.category }, (err, categories) => {
     // 從 Category 中尋找相對應的 icon 值
     if (err) {
       return console.error(err)
