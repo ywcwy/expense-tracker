@@ -5,19 +5,27 @@ const router = express.Router()
 const Record = require('../../models/record')
 
 
-//  引入路由模模組
+//
 router.get('/', (req, res) => {
-  Record.find()
+  const icon = req.query.category
+  const categories = {
+    living: '家居物業',
+    transport: '交通出行',
+    entertainment: '休閒娛樂',
+    food: '餐飲食品',
+    others: '其他'
+  }
+  Record.find({ category: categories[icon] })
     .lean()
-    .sort({ date: 'asc' })
     .then((record) => {
       let totalAmount = 0
       record.forEach(item => {
         totalAmount += item.amount
       })
       res.render('index', { record, totalAmount, css: 'index.css' })
-    }).catch(error => console.log(error))
+    })
 })
+
 
 
 // 匯出路由器
