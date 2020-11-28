@@ -25,7 +25,7 @@ router.post('/', (req, res) => { // 將 new page 填完的資料 post
       return console.error(err)
     }
     categories.forEach(category => {
-      console.log(`${category.categoryName} : ${category.icon}`)
+      // console.log(`${category.categoryName} : ${category.icon}`)
       record.icon = category.icon  // 修改實例中的 icon 值
     })
   }).lean()
@@ -62,7 +62,7 @@ router.delete('/:id', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
     .then((record) => record.remove())
-    .then(res.redirect(`/`))
+    .then(() => res.redirect(`/`))
     .catch(error => console.log(error))
 })
 
