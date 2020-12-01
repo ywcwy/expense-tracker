@@ -48,7 +48,6 @@ router.get('/:id/edit', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const id = req.params.id
-  const body = req.body
   return Record.findById(id)
     .then(record => {
       record = Object.assign(record, req.body)
