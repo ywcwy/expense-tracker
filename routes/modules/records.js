@@ -1,9 +1,12 @@
 
 // 引用 express 與 路由器
 const express = require('express')
+const handlebars = require('handlebars')
 const router = express.Router()
 const Record = require('../../models/record')
 const Category = require('../../models/category')
+
+
 
 // create new expense
 router.get('/new', (req, res) => { // new page
@@ -39,10 +42,16 @@ router.post('/', (req, res) => { // 將 new page 填完的資料 post
 // edit 
 router.get('/:id/edit', (req, res) => {
   const id = req.params.id
-  return Record.findById(id)
+  Record.findById(id)
     .lean()
     .then((record) => {
-      res.render('edit', { record, css: 'edit.css' })
+      const categoryName = record.category
+      handlebars.registerHelper('ifSelected', function (categoryName, target, options) {
+        if (categoryName === target) {
+          return options.fn(this)
+        }
+      })
+      res.render('edit', { record, categoryName, css: 'edit.css' })
     }).catch(error => console.log(error))
 })
 
