@@ -10,7 +10,7 @@ const Category = require('../../models/category')
 
 // create new expense
 router.get('/new', (req, res) => { // new page
-  return res.render('new', { css: 'edit.css' })
+  res.render('new', { css: 'edit.css' })
 })
 
 router.post('/', (req, res) => { // 將 new page 填完的資料 post
@@ -22,16 +22,10 @@ router.post('/', (req, res) => { // 將 new page 填完的資料 post
     date: body.date,
     amount: body.amount
   })
-  Category.find({ categoryName: record.category }, (err, categories) => {
-    // 從 Category 中尋找相對應的 icon 值
-    if (err) {
-      return console.error(err)
-    }
-    categories.forEach(category => {
-      // console.log(`${category.categoryName} : ${category.icon}`)
-      record.icon = category.icon  // 修改實例中的 icon 值
+  Category.find({ categoryName: record.category })  // 從 Category 中尋找相對應的 icon 值
+    .then((category) => {
+      record.icon = category[0].icon // 修改實例中的 icon 值
     })
-  }).lean()
     .then(() => {
       record.save()  // 將實例存入資料庫
       res.redirect('/')
@@ -57,10 +51,14 @@ router.get('/:id/edit', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const id = req.params.id
-  return Record.findById(id)
+  Record.findById(id)
     .then(record => {
       record = Object.assign(record, req.body)
-      return record.save()  //重新儲存修改後的資料
+      Category.find({ categoryName: record.category })  // 從 Category 中尋找相對應的 icon 值
+        .then((category) => {
+          record.icon = category[0].icon // 修改實例中的 icon 值
+          record.save()  //重新儲存修改後的資料
+        })
     }).then(() => res.redirect(`/`))
     .catch(error => console.log(error))
 })
@@ -68,7 +66,7 @@ router.put('/:id', (req, res) => {
 // delete
 router.delete('/:id', (req, res) => {
   const id = req.params.id
-  return Record.findById(id)
+  Record.findById(id)
     .then((record) => record.remove())
     .then(() => res.redirect(`/`))
     .catch(error => console.log(error))
