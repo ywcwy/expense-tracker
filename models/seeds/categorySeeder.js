@@ -19,5 +19,5 @@ db.once('open', () => { // 連線成功
     categoryName: '其他',
     icon: 'fas fa-pen'
   })
-  return db.close()
+    .then(() => db.close()) // 關閉資料庫連結
 })
