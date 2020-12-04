@@ -10,6 +10,5 @@ db.once('open', () => { // 連線成功
       date: item.date,
       amount: item.amount
     })
-  }).then(() => db.close())
-
+  })
 })
