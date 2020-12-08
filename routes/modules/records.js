@@ -37,7 +37,7 @@ router.post('/', (req, res) => { // 將 new page 填完的資料 post
 router.get('/:id/edit', (req, res) => {
   const id = req.params.id
   Record.findById(id)
-    .lean()
+    .lean()  // 需使用lean
     .then((record) => {
       const categoryName = record.category
       handlebars.registerHelper('ifSelected', function (categoryName, target, options) {
