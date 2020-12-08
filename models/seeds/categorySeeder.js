@@ -19,5 +19,8 @@ db.once('open', () => { // 連線成功
     categoryName: '其他',
     icon: 'fas fa-pen'
   })
-    .then(() => db.close()) // 關閉資料庫連結
+    .then(() => {
+      console.log(`categorySeeder has done!`)
+      db.close()  // 關閉資料庫連結
+    })
 })

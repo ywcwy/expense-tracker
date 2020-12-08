@@ -6,24 +6,19 @@ const Schema = mongoose.Schema
 // 定義資料庫綱要
 const recordSchema = new Schema({
   name: {
-    type: String,
-    required: true
+    type: String
   },
   icon: {
-    type: String,
-    required: true
+    type: String
   },
   category: {
-    type: String,
-    required: true
+    type: String
   },
   date: {
-    type: String,
-    required: true,
+    type: String
   },
   amount: {
-    type: Number,
-    required: true
+    type: Number
   }
 })
 
