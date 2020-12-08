@@ -1,48 +1,50 @@
 <main>
-  <div class="dropdown pt-3 text-center">
-    <button class="btn btn-light dropdown-toggle mb-3 mt-2 category" type="button" id="dropdownMenuButton"
-      data-toggle="dropdown" aria-haspopup="true" aria-expended="false">
-      類別
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a href="/filter?category=living" class="dropdown-item"><i class="fas fa-home"></i> 家居物業</a>
-      <a href="/filter?category=transport" class="dropdown-item"><i class="fas fa-shuttle-van"></i> 交通出行</a>
-      <a href="/filter?category=entertainment" class="dropdown-item"><i class="fas fa-grin-beam"></i> 休閒娛樂</a>
-      <a href="/filter?category=food" class="dropdown-item"><i class="fas fa-utensils"></i> 餐飲食品</a>
-      <a href="/filter?category=others" class="dropdown-item"><i class="fas fa-pen"></i> 其他</a>
+  <div class="panel">
+    <div class="dropdown pt-3 text-center">
+      <button class="btn btn-light dropdown-toggle mb-3 mt-2 category" type="button" id="dropdownMenuButton"
+        data-toggle="dropdown" aria-haspopup="true" aria-expended="false">
+        類別
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a href="/filter?category=living" class="dropdown-item"><i class="fas fa-home"></i> 家居物業</a>
+        <a href="/filter?category=transport" class="dropdown-item"><i class="fas fa-shuttle-van"></i> 交通出行</a>
+        <a href="/filter?category=entertainment" class="dropdown-item"><i class="fas fa-grin-beam"></i> 休閒娛樂</a>
+        <a href="/filter?category=food" class="dropdown-item"><i class="fas fa-utensils"></i> 餐飲食品</a>
+        <a href="/filter?category=others" class="dropdown-item"><i class="fas fa-pen"></i> 其他</a>
+      </div>
     </div>
-  </div>
-  <div class="total-amount-part text-center">
-    <div class="total d-flex justify-content-center mt-3 mr-5">
-      <p class="mr-2">總金額：</p>
-      <h1 class="total-amount">{{total}}</h1>
+    <div class="total-amount-part text-center">
+      <div class="total d-flex justify-content-center mt-3 mr-5">
+        <p class="mr-2">總金額：</p>
+        <h1 class="total-amount">{{total}}</h1>
+      </div>
     </div>
-  </div>
-  <table class="d-flex justify-content-center">
-    {{#each record}}
-    <tr class="data">
-      <td>
-        <i class="{{this.icon}} fa-3x mr-3 ml-3 d-flex justify-content-center" style="color: rgb(69, 150, 177)"></i>
-      </td>
-      <td class="item">
-        <h4 class="mt-2 name">{{this.name}}</h4>
-        <p class="mb-2 date">{{this.date}}</p>
-      </td>
-      <td class="">
-        <h4 class="mr-3 ml-3 mt-2 text-right">{{this.amount}}</h4>
-      </td>
-      <td class="edit">
-        <a class="btn modify mr-3 ml-3" href="/expense/{{this._id}}/edit"><button class="btn btn-info">修改</button></a>
-      </td>
-      <td class="edit">
-        <form action="/expense/{{this._id}}?_method=DELETE" method="POST" class="delete mr-3 ml-3" type="submit">
-          <button class="btn btn-danger" type="submit">刪除</button>
-        </form>
-      </td>
-    </tr>
-    {{/each}}
-  </table>
-  <div class="d-flex justify-content-center mt-3 pb-5">
-    <a class="btn btn-warning create" type="button" href="/expense/new">新增支出</a>
+    <table class="d-flex justify-content-center">
+      {{#each record}}
+      <tr class="data">
+        <td>
+          <i class="{{this.icon}} fa-3x mr-3 ml-3 d-flex justify-content-center" style="color: rgb(69, 150, 177)"></i>
+        </td>
+        <td class="item">
+          <h4 class="mt-2 name">{{this.name}}</h4>
+          <p class="mb-2 date">{{this.date}}</p>
+        </td>
+        <td class="">
+          <h4 class="mr-3 ml-3 mt-2 text-right">{{this.amount}}</h4>
+        </td>
+        <td class="edit">
+          <a class="btn modify mr-3 ml-3" href="/expense/{{this._id}}/edit"><button class="btn btn-info">修改</button></a>
+        </td>
+        <td class="edit">
+          <form action="/expense/{{this._id}}?_method=DELETE" method="POST" class="delete mr-3 ml-3" type="submit">
+            <button class="btn btn-danger" type="submit">刪除</button>
+          </form>
+        </td>
+      </tr>
+      {{/each}}
+    </table>
+    <div class="d-flex justify-content-center mt-3 pb-5">
+      <a class="btn btn-warning create" type="button" href="/expense/new">新增支出</a>
+    </div>
   </div>
 </main>
