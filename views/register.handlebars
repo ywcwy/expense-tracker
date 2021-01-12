@@ -1,1 +1,27 @@
-<h4>register</h4>
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="my-3 text-center">Register</h1>
+      <form action="/users/register" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label><input type="text" name="name" id="name" placeholder="your name"
+            class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label><input type="email" name="email" id="email" placeholder="your email"
+            class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label><input type="password" name="password" id="password"
+            placeholder="your password" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label><input type="password" name="confirmPassword"
+            id="confirmPassword" placeholder="confirm your password" class="form-control">
+        </div>
+        <button class="btn btn-warning btn-block">Register</button>
+        <p class="lead mt-3">Already Had An Account? <a href="/users/login">Login</a></p>
+      </form>
+    </div>
+  </div>
+</div>
