@@ -11,7 +11,7 @@ module.exports = app => {
     User.findOne({ email })
       .then(user => {
         if (!user) { return done(null, { message: 'This email is not registered.' }) }
-        if (!user.verifyPassword(password)) { return done(null, { message: 'The email or password was wrong.' }) }
+        if (!user.password !== password) { return done(null, { message: 'The email or password was wrong.' }) }
         return done(null, user)
       })
       .catch(err => done(err, false))
