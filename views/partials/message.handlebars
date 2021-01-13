@@ -1,0 +1,25 @@
+{{#if warning_msg}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{warning_msg}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+      aria-hidden="true">&times;</span></button>
+</div>
+{{/if}}
+{{#if success_msg}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{success_msg}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+      aria-hidden="true">&times;</span></button>
+</div>
+{{/if}}
+
+{{#if errors}} {{!-- 如果有error的話 --}}
+{{#each errors}} {{!-- error 陣列中的每個項目都要被 alert --}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{this.message}}
+  {{!-- error 陣列中的每個 message --}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+      aria-hidden="true">&times;</span></button>
+</div>
+{{/each}}
+{{/if}}

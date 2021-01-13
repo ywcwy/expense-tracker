@@ -4,6 +4,7 @@ const usePassport = require('./config/passport')  // 需在express-session 之�
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const flash = require('connect-flash')
 const routes = require('./routes')
 
 require('./config/mongoose')
@@ -25,10 +26,12 @@ app.use(session({
 }))
 
 usePassport(app) // app 為 passport 模組 中的必要參數，需在路由之前呼叫 passport 函式
-
+app.use(flash())
 app.use((req, res, next) => {   // 放在 res.locals 裡的資料，所有 view 都可以存取
   res.locals.isAuthenticated = req.isAuthenticated()
   res.locals.user = req.user  // 是在反序列化時取出的user值
+  res.locals.success_msg = req.flash('success_msg') // 拿到success_msg之後 要放到介面上
+  res.locals.warning_msg = req.flash('warning_msg')
   next()
 })
 
