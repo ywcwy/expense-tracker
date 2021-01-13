@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
     .lean()
     .sort({ date: 'asc' })
     .then((record) => {
-      return res.render('index', { record, total: sum(record), css: 'index.css' })
+      return res.render('index', { record, total: sum(record), css: 'index.css', category: categories[icon] })
     })
 })
 

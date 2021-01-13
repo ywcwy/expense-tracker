@@ -3,13 +3,15 @@
     <div class="dropdown pt-3 text-center">
       <button class="btn btn-light dropdown-toggle mb-3 mt-2 category" type="button" id="dropdownMenuButton"
         data-toggle="dropdown" aria-haspopup="true" aria-expended="false">
-        類別
+        {{#if category}}{{category}}{{else}}類別{{/if}}
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a href="/filter?category=living" class="dropdown-item"><i class="fas fa-home"></i> 家居物業</a>
-        <a href="/filter?category=transport" class="dropdown-item"><i class="fas fa-shuttle-van"></i> 交通出行</a>
+        <a href="/filter?category=transport" class="dropdown-item"><i class="fas fa-shuttle-van"></i>
+          交通出行</a>
         <a href="/filter?category=entertainment" class="dropdown-item"><i class="fas fa-grin-beam"></i> 休閒娛樂</a>
-        <a href="/filter?category=food" class="dropdown-item"><i class="fas fa-utensils"></i> 餐飲食品</a>
+        <a href="/filter?category=food" class="dropdown-item"><i class="fas fa-utensils"></i>
+          餐飲食品</a>
         <a href="/filter?category=others" class="dropdown-item"><i class="fas fa-pen"></i> 其他</a>
       </div>
     </div>
