@@ -26,6 +26,12 @@ app.use(session({
 
 usePassport(app) // app 為 passport 模組 中的必要參數，需在路由之前呼叫 passport 函式
 
+app.use((req, res, next) => {   // 放在 res.locals 裡的資料，所有 view 都可以存取
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user  // 是在反序列化時取出的user值
+  next()
+})
+
 app.use(routes)
 
 
