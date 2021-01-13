@@ -32,6 +32,8 @@ app.use((req, res, next) => {   // 放在 res.locals 裡的資料，所有 view 
   res.locals.user = req.user  // 是在反序列化時取出的user值
   res.locals.success_msg = req.flash('success_msg') // 拿到success_msg之後 要放到介面上
   res.locals.warning_msg = req.flash('warning_msg')
+  res.locals.error = req.flash('error')
+  res.locals.success = req.flash('success')
   next()
 })
 

@@ -1,3 +1,4 @@
+{{!-- alert when login unsuccessfully --}}
 {{#if warning_msg}}
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
   {{warning_msg}}
@@ -5,6 +6,8 @@
       aria-hidden="true">&times;</span></button>
 </div>
 {{/if}}
+
+{{!-- alert when logout successfully --}}
 {{#if success_msg}}
 <div class="alert alert-success alert-dismissible fade show" role="alert">
   {{success_msg}}
@@ -13,6 +16,7 @@
 </div>
 {{/if}}
 
+{{!-- alert during registration --}}
 {{#if errors}} {{!-- 如果有error的話 --}}
 {{#each errors}} {{!-- error 陣列中的每個項目都要被 alert --}}
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -22,4 +26,23 @@
       aria-hidden="true">&times;</span></button>
 </div>
 {{/each}}
+{{/if}}
+
+
+{{!-- alert during authentication --}}
+{{#if error}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  {{error}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+      aria-hidden="true">&times;</span></button>
+</div>
+{{/if}}
+
+{{!-- authentication successfully--}}
+{{#if success}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  {{success}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+      aria-hidden="true">&times;</span></button>
+</div>
 {{/if}}

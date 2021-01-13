@@ -8,7 +8,9 @@ router.get('/login', (req, res) => res.render('login'))
 
 router.post('/login', passport.authenticate('local', {
   failureRedirect: '/users/login',
-  successRedirect: '/'
+  successRedirect: '/',
+  failureFlash: true,
+  successFlash: true
 }))
 
 
