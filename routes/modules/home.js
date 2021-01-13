@@ -8,7 +8,8 @@ const Record = require('../../models/record')
 
 //  引入路由模模組
 router.get('/', (req, res) => {
-  Record.find()
+  const userId = req.user._id
+  Record.find({ userId }) // 只顯示有登入者 userId 的資料
     .lean()
     .sort({ date: 'asc' })
     .then(

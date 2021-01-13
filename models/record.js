@@ -19,6 +19,12 @@ const recordSchema = new Schema({
   },
   amount: {
     type: Number
+  },
+  userId: {
+    type: Schema.Types.ObjectId,  // 定義userId 是一個Object Id 會連向另一個資料物件
+    ref: 'User', // 定義參考的物件對象是 User model
+    index: true, // 把 userId 設定成索引來查詢資料
+    required: true
   }
 })
 

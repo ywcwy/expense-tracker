@@ -13,19 +13,19 @@ router.get('/new', (req, res) => { // new page
   res.render('new', { css: 'edit.css' })
 })
 
-router.post('/', (req, res) => { // 將 new page 填完的資料 post
-  const body = req.body
-  const record = new Record({  // 從 Record 產生一個實例
-    name: body.name,
-    category: body.category,
-    icon: body.category,
-    date: body.date,
-    amount: body.amount
+router.post('/', (req, res) => {
+  const { name, category, date, amount } = req.body
+  const userId = req.user._id
+  const record = new Record({
+    name,
+    category,
+    icon: category,
+    date,
+    amount,
+    userId
   })
   Category.find({ categoryName: record.category })  // 從 Category 中尋找相對應的 icon 值
-    .then((category) => {
-      record.icon = category[0].icon // 修改實例中的 icon 值
-    })
+    .then((category) => record.icon = category[0].icon) // 修改實例中的 icon 值
     .then(() => {
       record.save()  // 將實例存入資料庫
       res.redirect('/')
@@ -35,9 +35,11 @@ router.post('/', (req, res) => { // 將 new page 填完的資料 post
 
 // edit 
 router.get('/:id/edit', (req, res) => {
-  const id = req.params.id
-  Record.findById(id)
-    .lean()  // 需使用lean
+  const userId = req.user._id
+  const _id = req.params.id
+  Record.findOne({ _id, userId }) // 需把 findById 改成 findOne 才能串接多個條件
+    // 改用 findOne 之後，Mongoose 不會自動轉換_id 與 id，因此我們要寫和資料庫的名稱相同，也就是 _id
+    .lean()
     .then((record) => {
       const categoryName = record.category
       handlebars.registerHelper('ifSelected', function (categoryName, target, options) {
@@ -50,8 +52,9 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-  const id = req.params.id
-  Record.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  Record.findOne({ _id, userId })
     .then(record => {
       record = Object.assign(record, req.body)
       Category.find({ categoryName: record.category })  // 從 Category 中尋找相對應的 icon 值
@@ -65,8 +68,9 @@ router.put('/:id', (req, res) => {
 
 // delete
 router.delete('/:id', (req, res) => {
-  const id = req.params.id
-  Record.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  Record.findOne({ _id, userId })
     .then((record) => record.remove())
     .then(() => res.redirect(`/`))
     .catch(error => console.log(error))

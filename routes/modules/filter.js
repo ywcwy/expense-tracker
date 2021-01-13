@@ -7,6 +7,7 @@ const Record = require('../../models/record')
 
 // 過濾類別
 router.get('/', (req, res) => {
+  const userId = req.user._id
   const icon = req.query.category
   const categories = {
     living: '家居物業',
@@ -15,7 +16,7 @@ router.get('/', (req, res) => {
     food: '餐飲食品',
     others: '其他'
   }
-  Record.find({ category: categories[icon] })
+  Record.find({ category: categories[icon], userId })
     .lean()
     .sort({ date: 'asc' })
     .then((record) => {
