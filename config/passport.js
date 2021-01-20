@@ -19,7 +19,7 @@ module.exports = app => {
           .compare(password, user.password)
           .then(isMatch => {
             if (!isMatch) {
-              return done(null, false, req.flash('error', 'email 及 password 錯誤。'))
+              return done(null, false, req.flash('error', 'email 或 password 錯誤。'))
             } return done(null, user)
           })
       })

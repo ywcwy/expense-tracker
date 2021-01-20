@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { get } = require('../routes/modules/home')
 
 //引用mongoose的資料庫規劃
 const Schema = mongoose.Schema
@@ -18,7 +19,7 @@ const recordSchema = new Schema({
     required: true
   },
   date: {
-    type: String,
+    type: Date,
     required: true
   },
   amount: {

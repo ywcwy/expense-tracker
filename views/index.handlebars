@@ -2,7 +2,7 @@
   <div class="panel row">
     <div class="dropdown month-filter pt-3 text-center col-md-6">
       <button class="btn btn-light dropdown-toggle mb-3 mt-2 month" type="button" id="dropdownMonthButton"
-        data-toggle="dropdown" aria-haspopup="true" aria-expended="false">月份
+        data-toggle="dropdown" aria-haspopup="true" aria-expended="false">{{#if month}}{{month}}{{else}}月份{{/if}}
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a href="/filter?month=1" class="dropdown-item"> 一月</a>
@@ -10,7 +10,7 @@
         <a href="/filter?month=3" class="dropdown-item"> 三月</a>
         <a href="/filter?month=4" class="dropdown-item"> 四月</a>
         <a href="/filter?month=5" class="dropdown-item"> 五月</a>
-        <a href="/filter?month=5" class="dropdown-item"> 六月</a>
+        <a href="/filter?month=6" class="dropdown-item"> 六月</a>
         <a href="/filter?month=7" class="dropdown-item"> 七月</a>
         <a href="/filter?month=8" class="dropdown-item"> 八月</a>
         <a href="/filter?month=9" class="dropdown-item"> 九月</a>

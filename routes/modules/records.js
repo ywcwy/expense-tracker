@@ -7,7 +7,6 @@ const Record = require('../../models/record')
 const Category = require('../../models/category')
 
 
-
 // create new expense
 router.get('/new', (req, res) => { // new page
   res.render('new', { css: 'edit.css' })
@@ -26,7 +25,7 @@ router.post('/', (req, res) => {
     merchant
   })
   Category.find({ categoryName: record.category })  // 從 Category 中尋找相對應的 icon 值
-    .then((category) => record.icon = category[0].icon) // 修改實例中的 icon 值
+    .then(category => record.icon = category[0].icon) // 修改實例中的 icon 值
     .then(() => {
       record.save()  // 將實例存入資料庫
       res.redirect('/')
@@ -41,7 +40,7 @@ router.get('/:id/edit', (req, res) => {
   Record.findOne({ _id, userId }) // 需把 findById 改成 findOne 才能串接多個條件
     // 改用 findOne 之後，Mongoose 不會自動轉換_id 與 id，因此我們要寫和資料庫的名稱相同，也就是 _id
     .lean()
-    .then((record) => {
+    .then(record => {
       const categoryName = record.category
       handlebars.registerHelper('ifSelected', function (categoryName, target, options) {
         if (categoryName === target) {
