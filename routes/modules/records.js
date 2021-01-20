@@ -14,7 +14,7 @@ router.get('/new', (req, res) => { // new page
 })
 
 router.post('/', (req, res) => {
-  const { name, category, date, amount } = req.body
+  const { name, category, date, amount, merchant } = req.body
   const userId = req.user._id
   const record = new Record({
     name,
@@ -22,7 +22,8 @@ router.post('/', (req, res) => {
     icon: category,
     date,
     amount,
-    userId
+    userId,
+    merchant
   })
   Category.find({ categoryName: record.category })  // 從 Category 中尋找相對應的 icon 值
     .then((category) => record.icon = category[0].icon) // 修改實例中的 icon 值
