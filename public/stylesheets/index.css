@@ -15,8 +15,16 @@ main{
   width: 800px;
 }
 
+.category-filter {
+  margin-left: -100px;
+}
 
-.category {
+
+.month-filter {
+  margin-left: 50px;
+}
+
+.category, .month {
   border: 1px solid black;
   width: 200px;
   background-color: white;
