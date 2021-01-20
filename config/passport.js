@@ -1,6 +1,7 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const User = require('../models/user')
+const bcrypt = require('bcryptjs')
 
 module.exports = app => {
   // 初始化passport模組
@@ -8,11 +9,19 @@ module.exports = app => {
   app.use(passport.session())
   // 登錄策略
   passport.use(new LocalStrategy({ usernameField: 'email', passReqToCallback: true }, (req, email, password, done) => {  //usernameField: 'email'，把驗證項目從預設的 username 改成 email
+    if (!email || !password) { return done(null, false, req.flash('error', '請輸入email 及 password。')) }
     User.findOne({ email })
       .then(user => {
-        if (!user) { return done(null, false, req.flash('error', 'This email is not registered.')) }
-        if (user.password !== password) { return done(null, false, req.flash('error', 'The email or password was wrong.')) }
-        return done(null, user)
+        if (!user) {
+          return done(null, false, req.flash('error', '此 email 尚未被註冊。'))
+        }
+        return bcrypt
+          .compare(password, user.password)
+          .then(isMatch => {
+            if (!isMatch) {
+              return done(null, false, req.flash('error', 'email 及 password 錯誤。'))
+            } return done(null, user)
+          })
       })
       .catch(err => done(err, false))
   }))
