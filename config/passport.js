@@ -59,6 +59,6 @@ module.exports = app => {
     User.findById(id)
       .lean()
       .then(user => done(null, user))
-      .catch(err => done(err, null)) // 其實 Passport 看到第一個參數有 err 就不會處理後面的參數了，但多放一個 null 在語義上明確表達 user 是空的
+      .catch(err => done(err, null)) // Passport 看到第一個參數有 err 就不會處理後面的參數，但多放一個 null 在語義上明確表達 user 是空的
   })
 }

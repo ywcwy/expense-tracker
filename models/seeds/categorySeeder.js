@@ -18,7 +18,11 @@ db.once('open', () => { // 連線成功
   }, {
     categoryName: '其他',
     icon: 'fas fa-pen'
-  })
+  }, {
+    categoryName: '所有類別',
+    icon: 'fas fa-reply-all'
+  }
+  )
     .then(() => {
       console.log(`categorySeeder has done!`)
       db.close()  // 關閉資料庫連結
