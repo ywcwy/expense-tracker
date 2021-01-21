@@ -5,7 +5,7 @@ const passport = require('passport')
 const bcrypt = require('bcryptjs')
 
 
-router.get('/login', (req, res) => res.render('login'))
+router.get('/login', (req, res) => res.render('login', { css: 'index.css' }))
 
 router.post('/login', passport.authenticate('local', {
   failureRedirect: '/users/login',
@@ -15,7 +15,7 @@ router.post('/login', passport.authenticate('local', {
 }))
 
 
-router.get('/register', (req, res) => res.render('register'))
+router.get('/register', (req, res) => res.render('register', { css: 'index.css' }))
 
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
@@ -34,7 +34,8 @@ router.post('/register', (req, res) => {
       name,
       email,
       password,
-      confirmPassword
+      confirmPassword,
+      css: 'index.css'
     })
   }
   User.findOne({ email })
@@ -42,7 +43,7 @@ router.post('/register', (req, res) => {
       if (user) { // 如果有找到，代表此 email 已註冊過
         errors.push({ message: '此使用者已註冊過' })
         return res.render('register', {
-          name, email, password, confirmPassword, errors
+          name, email, password, confirmPassword, errors, css: 'index.css'
         })
       }
       return bcrypt

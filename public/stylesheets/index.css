@@ -6,7 +6,8 @@
 
 main{
   color: rgb(73, 72, 72);
-  background-color: rgb(220, 236, 236); 
+  background-color: rgb(210, 170, 150); 
+  height: 100vmax;
 }
 
 .panel{
@@ -14,6 +15,9 @@ main{
   width: 800px;
 }
 
+.dropdown {
+  width: 30px;
+}
 .category-filter {
   margin-left: -100px;
 }
@@ -24,17 +28,21 @@ main{
 }
 
 .category, .month {
-  border: 1px solid black;
+  border: 1px solid white;
+  color: white;
   width: 200px;
-  background-color: white;
+  background-color: rgb(92, 121, 179); 
+}
+.icon {
+  color:rgb(92, 121, 179); 
 }
 
 .total-amount {
-  color: rgb(255, 91, 27);
+  color: rgb(59, 59, 139); 
 }
 
 .data {
-  width: 400px;
+  width: 500px;
   margin: 0 auto;
 }
 
@@ -43,7 +51,7 @@ tr {
 }
 
 tr:hover {
-  background-color: #efefef;
+  background-color:rgb(250, 230, 200); 
 }
 .name{
   width: 150px;
@@ -52,6 +60,13 @@ tr:hover {
 .date {
   font-size: 0.8em;
 }
+
+.create{
+  position: fixed;
+  bottom: 50px;
+  /* border: 1px solid white; */
+}
+
 .modify, .delete{
   color: rgb(73, 72, 72);
 }

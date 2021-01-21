@@ -1,7 +1,18 @@
 <main>
   <div class="panel row">
-    <div class="dropdown month-filter pt-3 text-center col-md-6">
-      <button class="btn btn-light dropdown-toggle mb-3 mt-2 month" type="button" id="dropdownMonthButton"
+    <div class="total-amount-part text-center col-12">
+      <div class="total d-flex justify-content-center mt-3 mr-5">
+        <div class="col-6 d-flex justify-content-end">
+          <p class="mr-2 mt-5">支出總金額：</p>
+        </div>
+        <div class="col-6 d-flex justify-content-start">
+          <h1 class="total-amount col-6 mt-5">{{total}}</h1>
+        </div>
+
+      </div>
+    </div>
+    <div class="dropdown month-filter pt-3 text-center col-6 mt-3">
+      <button class="btn btn-light btn-sm dropdown-toggle mb-3 mt-2 month" type="button" id="dropdownMonthButton"
         data-toggle="dropdown" aria-haspopup="true" aria-expended="false">{{#if month}}{{month}}{{else}}月份{{/if}}
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -20,8 +31,8 @@
         <a href="/filter?month=all" class="dropdown-item"> 全部月份</a>
       </div>
     </div>
-    <div class="dropdown category-filter pt-3 text-center col-md-6">
-      <button class="btn btn-light dropdown-toggle mb-3 mt-2 category" type="button" id="dropdownMenuButton"
+    <div class="dropdown category-filter pt-3 text-center col-6 mt-3">
+      <button class="btn btn-light btn-sm dropdown-toggle mb-3 mt-2 category" type="button" id="dropdownMenuButton"
         data-toggle="dropdown" aria-haspopup="true" aria-expended="false">
         {{#if category}}{{category}}{{else}}類別{{/if}}
       </button>
@@ -36,17 +47,11 @@
         <a href="/filter?category=all" class="dropdown-item"><i class="fas fa-reply-all"></i> 所有類別</a>
       </div>
     </div>
-    <div class="total-amount-part text-center col-md-12">
-      <div class="total d-flex justify-content-center mt-3 mr-5">
-        <p class="mr-2">支出總金額：</p>
-        <h1 class="total-amount">{{total}}</h1>
-      </div>
-    </div>
-    <table class="d-flex justify-content-center col-md-12">
+    <table class="d-flex justify-content-center col-md-12 mt-3">
       {{#each record}}
       <tr class="data">
         <td>
-          <i class="{{this.icon}} fa-3x mr-3 ml-3 d-flex justify-content-center" style="color: rgb(69, 150, 177)"></i>
+          <i class="{{this.icon}} fa-2x mr-3 ml-3 d-flex justify-content-center icon"></i>
         </td>
         <td class="item">
           <h4 class="mt-2 name">{{this.name}}</h4>
@@ -56,18 +61,19 @@
           <h4 class="mr-3 ml-3 mt-2 text-right">{{this.amount}}</h4>
         </td>
         <td class="edit">
-          <a class="btn modify mr-3 ml-3" href="/expense/{{this._id}}/edit"><button class="btn btn-info">修改</button></a>
+          <a class="btn modify mr-3 ml-3" href="/expense/{{this._id}}/edit"><button
+              class="btn btn-secondary">修改</button></a>
         </td>
         <td class="edit">
           <form action="/expense/{{this._id}}?_method=DELETE" method="POST" class="delete mr-3 ml-3" type="submit">
-            <button class="btn btn-danger" type="submit">刪除</button>
+            <button class="btn btn-light" type="submit">刪除</button>
           </form>
         </td>
       </tr>
       {{/each}}
     </table>
     <div class="mt-3 pb-5 mx-auto">
-      <a class="btn btn-warning create" type="button" href="/expense/new">新增支出</a>
+      <a class="btn btn-info create" type="button" href="/expense/new">新增支出</a>
     </div>
   </div>
 </main>

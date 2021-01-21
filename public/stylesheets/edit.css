@@ -5,7 +5,8 @@
 
 main{
   color: rgb(73, 72, 72);
-  background-color: rgb(220, 236, 236); 
+  background-color: rgb(210, 170, 150); 
+  height: 100vmax;
 }
 
 .panel {
@@ -15,6 +16,11 @@ main{
 
 .required{
   font-size: 0.5em;
+}
+
+.back{
+  position: fixed;
+  bottom: 50px;
 }
 
 .title {
