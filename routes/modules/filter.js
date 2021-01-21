@@ -33,23 +33,34 @@ router.get('/', (req, res) => {
     12: '十二月',
   }
 
+
+  let itemDate = ''
   if (!icon) { // 沒選擇類別，只選擇月份
     Record.find({ userId })
       .lean()
       .sort({ date: 'asc' })
       .then((record) => {
         record = record.filter(item => item.date.getMonth() + 1 === Number(month))
-        return res.render('index', { record, total: sum(record), css: 'index.css', month: months[month] })
+        getDate(record, itemDate)
+        return res.render('index', { record, date: itemDate, total: sum(record), css: 'index.css', month: months[month] })
       })
   } else if (!month) { // 沒選擇月份，只選擇類別
     Record.find({ category: categories[icon], userId })
       .lean()
       .sort({ date: 'asc' })
       .then((record) => {
-        return res.render('index', { record, total: sum(record), css: 'index.css', category: categories[icon] })
+        getDate(record, itemDate)
+        return res.render('index', { record, date: itemDate, total: sum(record), css: 'index.css', category: categories[icon] })
       })
   }
 })
+
+function getDate(record, itemDate) {  // 將資料庫內的支出日期改為以 年-月-日 的方式呈現
+  record.map(item => {
+    item.date = `${item.date.getFullYear()}-${item.date.getMonth() + 1}-${item.date.getDate()}`
+    itemDate = item.date
+  })
+}
 
 // 匯出路由器
 module.exports = router

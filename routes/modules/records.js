@@ -25,16 +25,6 @@ router.post('/', (req, res) => {
     merchant
   })
 
-  Record.find()
-    .then(record => {
-      console.log(record.date)
-      record.date = `${record[0].date.getFullYear()},${record[0].date.getMonth() + 1},${record[0].date.getDate()}`
-      console.log(record)
-      console.log(record.date)
-    })
-    .then(() => record.save())
-    .catch(error => console.log(error))
-
   Category.find({ categoryName: record.category })  // 從 Category 中尋找相對應的 icon 值
     .then(category => record.icon = category[0].icon) // 修改實例中的 icon 值
     .then(() => {

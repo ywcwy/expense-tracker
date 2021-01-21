@@ -9,11 +9,16 @@ const Record = require('../../models/record')
 //  引入路由模模組
 router.get('/', (req, res) => {
   const userId = req.user._id
+  let itemDate = ''
   Record.find({ userId }) // 只顯示有登入者 userId 的資料
     .lean()
     .sort({ date: 'asc' })
     .then(record => {
-      return res.render('index', { record, total: sum(record), css: 'index.css' })
+      record.map(item => {
+        item.date = `${item.date.getFullYear()}-${item.date.getMonth() + 1}-${item.date.getDate()}`
+        itemDate = item.date
+      })
+      return res.render('index', { record, date: itemDate, total: sum(record), css: 'index.css' })
     })
     .catch(error => console.log(error))
 })
