@@ -12,7 +12,9 @@ router.get('/', (req, res) => {
   Record.find({ userId }) // 只顯示有登入者 userId 的資料
     .lean()
     .sort({ date: 'asc' })
-    .then(record => res.render('index', { record, total: sum(record), css: 'index.css' }))
+    .then(record => {
+      return res.render('index', { record, total: sum(record), css: 'index.css' })
+    })
     .catch(error => console.log(error))
 })
 

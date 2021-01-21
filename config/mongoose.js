@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/expense-list'
+const MONGODB_URI = process.env.MONGODB_URI
 
 // 連線到資料庫
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }) //資料庫伺服器內的專案名稱
