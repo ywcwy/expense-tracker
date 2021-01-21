@@ -5,11 +5,12 @@ to track your every cent
 
 
 ## Features
-* record your every expense
+* register or login via Facebook
+* record your each expense
 * edit particular expense info
 * delete particular expense 
 * get the total amount of all expense
-* get total amount of particular category by filtering
+* get total amount of particular category or month by filtering
 
 ## Environment
 * Node.js
@@ -19,6 +20,13 @@ to track your every cent
 * express-handlebars
 * method-override
 * body-parser
+* express-session
+* passport
+* passport-facebook
+* passport-local
+* connect-flash
+* bcryptjs
+* dotenv
 
 ## Database
 * mongoose 
@@ -42,7 +50,7 @@ $npm init -y     // create and initialize package.json directory
 ```
 $npm install     // install all the Packages
 ```
-### 5. Connect to the Database
+### 5. Connect to the Database & create Seeders
 ```
 $npm run seed      // install all the Seeders
 ```
