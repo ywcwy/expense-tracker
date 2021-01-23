@@ -1,8 +1,8 @@
 # expense-tracker
 to track your every cent
 
-![Image](https://raw.githubusercontent.com/ywcwy/expense-tracker/master/expense-tracker.png)
-
+![Image](https://raw.githubusercontent.com/ywcwy/expense-tracker/master/expense-login.png)
+![Image](https://raw.githubusercontent.com/ywcwy/expense-tracker/master/expense-list.png)
 
 ## Features
 * register or login via Facebook
