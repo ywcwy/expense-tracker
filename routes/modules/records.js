@@ -46,7 +46,12 @@ router.get('/:id/edit', (req, res) => {
           return options.fn(this)
         }
       })
-      res.render('edit', { record, categoryName, css: 'edit.css' })
+      let month = record.date.getMonth() + 1
+      month = (month < 10) ? `0${month}` : month // 如果月份只有一個數字，要在數字前加一個 0
+      let date = record.date.getDate() + 1
+      date = (date < 10) ? `0${date}` : date // 如果日期只有一個數字，要在數字前加一個 0
+      let recordDate = `${record.date.getFullYear()}-${month}-${date}`
+      return res.render('edit', { record, recordDate, categoryName, css: 'edit.css' })
     }).catch(error => console.log(error))
 })
 
@@ -57,7 +62,7 @@ router.put('/:id', (req, res) => {
     .then(record => {
       record = Object.assign(record, req.body)
       Category.find({ categoryName: record.category })  // 從 Category 中尋找相對應的 icon 值
-        .then((category) => {
+        .then(category => {
           record.icon = category[0].icon // 修改實例中的 icon 值
           record.save()  //重新儲存修改後的資料
         })
@@ -70,10 +75,11 @@ router.delete('/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
   Record.findOne({ _id, userId })
-    .then((record) => record.remove())
+    .then(record => record.remove())
     .then(() => res.redirect(`/`))
     .catch(error => console.log(error))
 })
 
-// 匯出路由器
+
+
 module.exports = router
