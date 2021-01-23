@@ -4,7 +4,6 @@ const router = express.Router()
 const Record = require('../../models/record')
 const Category = require('../../models/category')
 
-
 // create new expense
 router.get('/new', (req, res) => { // new page
   res.render('new', { css: 'edit.css' })
@@ -24,7 +23,9 @@ router.post('/', (req, res) => {
   })
 
   Category.find({ categoryName: record.category })  // 從 Category 中尋找相對應的 icon 值
-    .then(category => record.icon = category[0].icon) // 修改實例中的 icon 值
+    .then(category => {
+      record.icon = category[0].icon
+    }) // 修改實例中的 icon 值
     .then(() => {
       record.save()  // 將實例存入資料庫
       res.redirect('/')

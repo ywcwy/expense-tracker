@@ -6,7 +6,7 @@ if (process.env.NODE_ENV !== 'production') {
 const db = require('../../config/mongoose')
 const Record = require('../record')
 const User = require('../user')
-const recordList = require('../records.json')
+const recordList = require('../records')
 const SEED_USER = {
   name: 'clever',
   email: 'clever@example.com',

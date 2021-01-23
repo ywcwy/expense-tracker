@@ -17,14 +17,6 @@ const months = [{ month: '1', chinese: '一月' },
 { month: '11', chinese: '十一月' },
 { month: '12', chinese: '十二月' }]
 
-const categories = {
-  家居物業: 'living',
-  交通出行: 'transport',
-  休閒娛樂: 'entertainment',
-  餐飲食品: 'food',
-  其他: 'others',
-}
-
 
 router.get('/', (req, res) => {
   const userId = req.user._id
