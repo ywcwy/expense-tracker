@@ -18,15 +18,19 @@ main{
 .dropdown {
   width: 30px;
 }
-.category-filter {
-  margin-left: -100px;
+#category-filter, #month-filter {
+  border-radius: 5px;
 }
 
-
-.month-filter {
-  margin-left: 50px;
+.filter-button {
+  color: rgb(54, 54, 105); 
 }
 
+fieldset{
+  position: fixed;
+  left: 30px;
+  border: 1px solid white;
+}
 .category, .month {
   border: 1px solid white;
   color: white;
@@ -60,9 +64,12 @@ tr:hover {
 .date {
   font-size: 0.8em;
 }
-
+.delete-button:hover{
+  color: red;
+}
 .create{
   position: fixed;
+  right: 50px;
   bottom: 50px;
   /* border: 1px solid white; */
 }

@@ -11,9 +11,44 @@
 
       </div>
     </div>
-    <div class="dropdown month-filter pt-3 text-center col-6 mt-3">
+    <fieldset class="text-center mt-3">
+      <form action="/" method="GET" class="filter col-12 mt-3">
+        {{!-- <select name="month" id="month-filter">
+          <option value="all" {{#ifSelected month "all" }}selected{{/ifSelected}}>所有月份</option>
+          {{#each months}}
+          <option value="{{this.month}}">{{this.chinese}}</option>
+          {{/each}}
+        </select>
+        <select type="text" name="category" id="category-filter" class="mt-3 d-block">
+          <option value="all">所有類別</option>
+          <option value="家居物業">家居物業</option>
+          <option value="交通出行">交通出行</option>
+          <option value="休閒娛樂">休閒娛樂</option>
+          <option value="餐飲食品">餐飲食品</option>
+          <option value="其他">其他</option>
+        </select> --}}
+        <select name="month" id="month-filter">
+          <option value="all" {{#ifSelected month "all" }}selected{{/ifSelected}}>所有月份</option>
+          {{#each months}}
+          <option value="{{this.month}}" {{#ifSelected this.month ../month}} selected {{/ifSelected}}>{{this.chinese}}
+          </option>
+          {{/each}}
+        </select>
+        <select type="text" name="category" id="category-filter" class="mt-3 d-block">
+          <option value="all" {{#ifSelected category "all" }} selected {{/ifSelected}}>所有類別</option>
+          <option value="家居物業" {{#ifSelected category "家居物業" }} selected {{/ifSelected}}>家居物業</option>
+          <option value="交通出行" {{#ifSelected category "交通出行" }} selected {{/ifSelected}}>交通出行</option>
+          <option value="休閒娛樂" {{#ifSelected category "休閒娛樂" }} selected {{/ifSelected}}>休閒娛樂</option>
+          <option value="餐飲食品" {{#ifSelected category "餐飲食品" }} selected {{/ifSelected}}>餐飲食品</option>
+          <option value="其他" {{#ifSelected category "其他" }} selected {{/ifSelected}}>其他</option>
+        </select>
+        <button type="submit" class="btn btn-warning filter-button my-2">篩選</button>
+      </form>
+    </fieldset>
+
+    {{!-- <div class="dropdown month-filter pt-3 text-center col-6 mt-3">
       <button class="btn btn-light btn-sm dropdown-toggle mb-3 mt-2 month" type="button" id="dropdownMonthButton"
-        data-toggle="dropdown" aria-haspopup="true" aria-expended="false">{{#if month}}{{month}}{{else}}月份{{/if}}
+        data-toggle="dropdown" aria-haspopup="true" aria-expended="false">
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a href="/filter?month=1" class="dropdown-item"> 一月</a>
@@ -34,7 +69,7 @@
     <div class="dropdown category-filter pt-3 text-center col-6 mt-3">
       <button class="btn btn-light btn-sm dropdown-toggle mb-3 mt-2 category" type="button" id="dropdownMenuButton"
         data-toggle="dropdown" aria-haspopup="true" aria-expended="false">
-        {{#if category}}{{category}}{{else}}類別{{/if}}
+
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <a href="/filter?category=living" class="dropdown-item"><i class="fas fa-home"></i> 家居物業</a>
@@ -46,7 +81,7 @@
         <a href="/filter?category=others" class="dropdown-item"><i class="fas fa-pen"></i> 其他</a>
         <a href="/filter?category=all" class="dropdown-item"><i class="fas fa-reply-all"></i> 所有類別</a>
       </div>
-    </div>
+    </div> --}}
     <table class="d-flex justify-content-center col-md-12 mt-3">
       {{#each record}}
       <tr class="data">
@@ -66,7 +101,7 @@
         </td>
         <td class="edit">
           <form action="/expense/{{this._id}}?_method=DELETE" method="POST" class="delete mr-3 ml-3" type="submit">
-            <button class="btn btn-light" type="submit">刪除</button>
+            <button class="delete-button btn btn-light" type="submit">刪除</button>
           </form>
         </td>
       </tr>

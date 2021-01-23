@@ -1,5 +1,3 @@
-
-// 引用 express 與 路由器
 const express = require('express')
 const handlebars = require('handlebars')
 const router = express.Router()
