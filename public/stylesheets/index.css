@@ -30,6 +30,7 @@ fieldset{
   position: fixed;
   left: 30px;
   border: 1px solid white;
+  z-index: 99;
 }
 .category, .month {
   border: 1px solid white;

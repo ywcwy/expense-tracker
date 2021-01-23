@@ -3,30 +3,16 @@
     <div class="total-amount-part text-center col-12">
       <div class="total d-flex justify-content-center mt-3 mr-5">
         <div class="col-6 d-flex justify-content-end">
-          <p class="mr-2 mt-5">支出總金額：</p>
+          <p class="mr-2 my-4">支出總金額：</p>
         </div>
         <div class="col-6 d-flex justify-content-start">
-          <h1 class="total-amount col-6 mt-5">{{total}}</h1>
+          <h1 class="total-amount col-6 my-4">{{total}}</h1>
         </div>
 
       </div>
     </div>
-    <fieldset class="text-center mt-3">
+    <fieldset class="text-center mt-5">
       <form action="/" method="GET" class="filter col-12 mt-3">
-        {{!-- <select name="month" id="month-filter">
-          <option value="all" {{#ifSelected month "all" }}selected{{/ifSelected}}>所有月份</option>
-          {{#each months}}
-          <option value="{{this.month}}">{{this.chinese}}</option>
-          {{/each}}
-        </select>
-        <select type="text" name="category" id="category-filter" class="mt-3 d-block">
-          <option value="all">所有類別</option>
-          <option value="家居物業">家居物業</option>
-          <option value="交通出行">交通出行</option>
-          <option value="休閒娛樂">休閒娛樂</option>
-          <option value="餐飲食品">餐飲食品</option>
-          <option value="其他">其他</option>
-        </select> --}}
         <select name="month" id="month-filter">
           <option value="all" {{#ifSelected month "all" }}selected{{/ifSelected}}>所有月份</option>
           {{#each months}}
@@ -42,46 +28,9 @@
           <option value="餐飲食品" {{#ifSelected category "餐飲食品" }} selected {{/ifSelected}}>餐飲食品</option>
           <option value="其他" {{#ifSelected category "其他" }} selected {{/ifSelected}}>其他</option>
         </select>
-        <button type="submit" class="btn btn-warning filter-button my-2">篩選</button>
+        <button type="submit" class="btn btn-warning filter-button my-3">篩選</button>
       </form>
     </fieldset>
-
-    {{!-- <div class="dropdown month-filter pt-3 text-center col-6 mt-3">
-      <button class="btn btn-light btn-sm dropdown-toggle mb-3 mt-2 month" type="button" id="dropdownMonthButton"
-        data-toggle="dropdown" aria-haspopup="true" aria-expended="false">
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a href="/filter?month=1" class="dropdown-item"> 一月</a>
-        <a href="/filter?month=2" class="dropdown-item"> 二月</a>
-        <a href="/filter?month=3" class="dropdown-item"> 三月</a>
-        <a href="/filter?month=4" class="dropdown-item"> 四月</a>
-        <a href="/filter?month=5" class="dropdown-item"> 五月</a>
-        <a href="/filter?month=6" class="dropdown-item"> 六月</a>
-        <a href="/filter?month=7" class="dropdown-item"> 七月</a>
-        <a href="/filter?month=8" class="dropdown-item"> 八月</a>
-        <a href="/filter?month=9" class="dropdown-item"> 九月</a>
-        <a href="/filter?month=10" class="dropdown-item"> 十月</a>
-        <a href="/filter?month=11" class="dropdown-item"> 十ㄧ月</a>
-        <a href="/filter?month=12" class="dropdown-item"> 十二月</a>
-        <a href="/filter?month=all" class="dropdown-item"> 全部月份</a>
-      </div>
-    </div>
-    <div class="dropdown category-filter pt-3 text-center col-6 mt-3">
-      <button class="btn btn-light btn-sm dropdown-toggle mb-3 mt-2 category" type="button" id="dropdownMenuButton"
-        data-toggle="dropdown" aria-haspopup="true" aria-expended="false">
-
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a href="/filter?category=living" class="dropdown-item"><i class="fas fa-home"></i> 家居物業</a>
-        <a href="/filter?category=transport" class="dropdown-item"><i class="fas fa-shuttle-van"></i>
-          交通出行</a>
-        <a href="/filter?category=entertainment" class="dropdown-item"><i class="fas fa-grin-beam"></i> 休閒娛樂</a>
-        <a href="/filter?category=food" class="dropdown-item"><i class="fas fa-utensils"></i>
-          餐飲食品</a>
-        <a href="/filter?category=others" class="dropdown-item"><i class="fas fa-pen"></i> 其他</a>
-        <a href="/filter?category=all" class="dropdown-item"><i class="fas fa-reply-all"></i> 所有類別</a>
-      </div>
-    </div> --}}
     <table class="d-flex justify-content-center col-md-12 mt-3">
       {{#each record}}
       <tr class="data">
